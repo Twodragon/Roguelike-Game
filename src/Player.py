@@ -180,7 +180,7 @@ class Player:
                     monster_group.pop(chosen_monster_index)
                     if len(monster_group) == 0:
                         finished_planet = self.get_final_reward(accumulated_reward, 'won', presenter)
-                        if finished_planet is 1:
+                        if finished_planet == 0:
                             presenter.model.monster_groups.remove(presenter.model.enemy)
                             presenter.model.objects.remove(presenter.model.enemy.game_object)
                             presenter.model.monster_factory.generate_monster_group(presenter.model.map)
@@ -211,7 +211,7 @@ class Player:
             presenter.fight_state = 'enemy turn'
         else:
             finished_planet_code = self.get_final_reward(accumulated_reward, 'fled', presenter)
-            if finished_planet_code is 1:
+            if finished_planet_code == 0:
                 presenter.model.monster_groups.remove(presenter.model.enemy)
                 presenter.model.objects.remove(presenter.model.enemy.game_object)
                 presenter.model.monster_factory.generate_monster_group(presenter.model.map)
